@@ -1,9 +1,7 @@
-// ignore: file_names
-// ignore_for_file: file_names, duplicate_ignore
-
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:infinite_carousel/infinite_carousel.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TopSlider extends StatefulWidget {
   const TopSlider({super.key});
@@ -45,9 +43,9 @@ class _TopSliderState extends State<TopSlider> {
     controller3 = InfiniteScrollController();
 
     timer = Timer.periodic(const Duration(milliseconds: 1200), (timer) {
-      controller1.nextItem(); // left
-      controller2.previousItem(); // reverse direction
-      controller3.nextItem(); // left
+      controller1.nextItem();
+      controller2.previousItem();
+      controller3.nextItem();
     });
   }
 
@@ -62,22 +60,24 @@ class _TopSliderState extends State<TopSlider> {
 
   Widget buildSlider(List<String> images, InfiniteScrollController controller) {
     return SizedBox(
-      height: 80,
+      height: 80.h,
       child: InfiniteCarousel.builder(
         itemCount: images.length,
-        itemExtent: 100,
+        itemExtent: 100.w,
         center: false,
         controller: controller,
         velocityFactor: 0.1,
         loop: true,
         itemBuilder: (context, index, realIndex) {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
+            padding: EdgeInsets.symmetric(horizontal: 8.w),
             child: Container(
-              padding: const EdgeInsets.all(8),
+              padding: EdgeInsets.all(8.w),
               decoration: BoxDecoration(
                 color: Colors.grey.shade200,
-                borderRadius: BorderRadius.circular(12),
+                borderRadius: BorderRadius.circular(
+                  12.r,
+                ), // ✅ responsive radius
               ),
               child: Image.asset(images[index], fit: BoxFit.contain),
             ),
@@ -90,11 +90,12 @@ class _TopSliderState extends State<TopSlider> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         buildSlider(fruits, controller1),
-        const SizedBox(height: 10),
+        SizedBox(height: 10.h),
         buildSlider(chocolates, controller2),
-        const SizedBox(height: 10),
+        SizedBox(height: 10.h),
         buildSlider(grocery, controller3),
       ],
     );

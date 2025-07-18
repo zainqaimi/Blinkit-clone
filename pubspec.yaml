@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   infinite_carousel: ^1.0.2
+  flutter_screenutil: ^5.9.3
 
   flutter:
     sdk: flutter

@@ -1,7 +1,10 @@
 // ignore_for_file: file_names
 
+import 'package:blinkit_clone/repository/screens/bottomTabs/bottomnav.dart';
 import 'package:blinkit_clone/repository/screens/login/topslider.dart';
+import 'package:blinkit_clone/repository/widgets/uihelper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -12,62 +15,103 @@ class LoginScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          const SizedBox(height: 50),
-
-          /// ✅ Non-stop triple slider
-          TopSlider(),
-
-          const SizedBox(height: 20),
-
-          /// Logo
-          Image.asset('assets/images/blinkit_logo.png', height: 50),
-
-          const SizedBox(height: 10),
-          const Text(
-            "India's last minute app",
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          SizedBox(height: 20.h), // ✅ scaled height
+          const TopSlider(),
+          SizedBox(height: 20.h),
+          Uihelper.customimage(img: 'blinkit_logo.png'),
+          SizedBox(height: 10.h),
+          Uihelper.customText(
+            text: "India's last minute app",
+            fontweight: FontWeight.bold,
+            color: Colors.black,
+            fontsize: 20.sp, // ✅ scaled font
+            fontfamily: 'bold',
           ),
-
-          const SizedBox(height: 20),
-
-          /// Avatar
-          const CircleAvatar(
-            radius: 30,
-            backgroundImage: AssetImage('assets/images/blinkit_logo.png'),
-          ),
-          const SizedBox(height: 8),
-          const Text("7827XXXX"),
-
-          const SizedBox(height: 20),
-
-          /// Zomato Login Button
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red,
-                minimumSize: const Size(double.infinity, 50),
-              ),
-              onPressed: () {},
-              child: const Text(
-                "Login with Zomato",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
+          SizedBox(height: 20.h),
+          Card(
+            elevation: 4,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.r), // ✅ responsive radius
             ),
-          ),
-
-          const SizedBox(height: 10),
-
-          /// Phone number login
-          TextButton(
-            onPressed: () {},
-            child: const Text(
-              "or login with phone number",
-              style: TextStyle(color: Colors.green),
+            child: Container(
+              height: 200.h,
+              width: 350.w,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10.r),
+              ),
+              child: Column(
+                children: [
+                  SizedBox(height: 10.h),
+                  Uihelper.customText(
+                    text: 'zain',
+                    color: Colors.black,
+                    fontweight: FontWeight.w500,
+                    fontsize: 14.sp, // ✅ scaled font
+                  ),
+                  SizedBox(height: 5.h),
+                  Uihelper.customText(
+                    text: '7827XXXX',
+                    color: const Color(0xff9C9C9C),
+                    fontweight: FontWeight.bold,
+                    fontsize: 14.sp,
+                    fontfamily: "bold",
+                  ),
+                  SizedBox(height: 20.h),
+                  SizedBox(
+                    height: 48.h,
+                    width: 290.w,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => Bottomnavscreen(),
+                          ),
+                        );
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.red,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.r),
+                        ),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Uihelper.customText(
+                            text: 'Login with',
+                            color: Colors.white,
+                            fontweight: FontWeight.bold,
+                            fontsize: 14.sp,
+                            fontfamily: "bold",
+                          ),
+                          SizedBox(width: 5.w),
+                          Uihelper.customimage(img: 'zomato.png'),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 5.h),
+                  Uihelper.customText(
+                    text:
+                        'Access your saved addresses from Zomato automatically!',
+                    color: const Color(0xff9C9C9C),
+                    fontweight: FontWeight.normal,
+                    fontsize: 9.sp,
+                  ),
+                  SizedBox(height: 10.h),
+                  TextButton(
+                    onPressed: () {},
+                    child: Uihelper.customText(
+                      text: 'or login with phone number',
+                      color: const Color(0xff269237),
+                      fontweight: FontWeight.w400,
+                      fontsize: 14.sp,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
