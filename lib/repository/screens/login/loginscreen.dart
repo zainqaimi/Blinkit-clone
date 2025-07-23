@@ -15,7 +15,7 @@ class LoginScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Column(
         children: [
-          SizedBox(height: 20.h), // ✅ scaled height
+          SizedBox(height: 20.h),
           const TopSlider(),
           SizedBox(height: 20.h),
           Uihelper.customimage(img: 'blinkit_logo.png'),

@@ -1,8 +1,19 @@
 import 'package:blinkit_clone/repository/screens/splash/splashscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart'; // ✅ yeh zaroor add karo
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Color(0xffEC0505), // Blinkit Red
+      statusBarIconBrightness: Brightness.light, // white icons
+      statusBarBrightness: Brightness.dark, // iOS ke liye
+    ),
+  );
+
   runApp(const MyApp());
 }
 
